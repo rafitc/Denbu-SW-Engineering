@@ -34,6 +34,10 @@ Coding Envvironment:
 1. You can gitpod as your coding environment. if you want and then share the gitpod workspace to Denbu Email id (https://gitpod.io/#https://github.com/dinesh-rt/Denbu-SW-Engineering)
 2. You can fork this github repo and do your development in your own machine and submit the working code with the github repository 
 
+Steps to compile program:
+1. make all -- build the library and compile main.c test file to create a binary called "test". You can run like ./test
+2. make clean - delete the object files and shared library 
+
 Verification:
 1. We have our own tests to validate the library you are submitting. 
 2. Test cases that will be validated 
