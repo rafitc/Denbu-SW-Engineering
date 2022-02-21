@@ -2,10 +2,10 @@
 Take home interview question for Denbu SW Enginee. Please Complete the question and share your Github repo to the Denbu email id. 
 
 Objective:
-Implemete a Denbu memory allocator library to be used in an embedded system. 
+Implement a Denbu memory allocator library to be used in an embedded system. 
 
 Requirements: 
-For this project, you will be implementing several different routines as part of a shared library. Note that you will not be writing a main() routine for the code that you handin (but you should implement one for your own testing). We have provided the prototypes for these functions in the file mem.h. you should include this header file in your code to ensure that you are adhering to the specification exactly. You should not change mem.h in any way! We now define each of these routines more precisely.
+For this question, you will be implementing several different routines as part of a shared library. Note that you will not be writing a main() routine for the code that you handin (but you should implement one for your own testing). We have provided the prototypes for these functions in the file mem.h. you should include this header file in your code to ensure that you are adhering to the specification exactly. You should not change mem.h in any way! We now define each of these routines more precisely.
 
    int Denbu_Mem_Init(int sizeOfRegion): Denbu_Mem_Init is called one time by a process using your routines. sizeOfRegion is the number of bytes that will be requested from OS using mmap().
     For simplicity, i have prefilled the Denbu_Mem_Init to round up the size to pageSize granularity. You are not allowed to malloc(), or any other related function, in any of your routines! Similarly, you should not allocate global arrays. However, you may allocate a few global variables (e.g., a pointer to the head of your free list.)
