@@ -63,6 +63,7 @@ int Denbu_Mem_Init(int sizeOfRegion)
     head_block = (payload_header*)memmptr;
     printf("Head block space %p\n", head_block);
     head_block->next = NULL;
+    //Store the allocation status and payload size
     head_block->alloc_flag = 1;
     head_block->size = sizeOfRegion - (int)sizeof(payload_header);
     printf("Allocation status of head block %d\n", head_block->size);
@@ -87,7 +88,7 @@ void* Denbu_Mem_Alloc(int mem_size_test, int style){
 	{
 		++mem_size_test;
 	}
-    printf("mem size after updation %d\n", mem_size_test);
+    //printf("mem size after updation %d\n", mem_size_test);
 
 
     switch(style){
@@ -97,9 +98,11 @@ void* Denbu_Mem_Alloc(int mem_size_test, int style){
             break;
         case 2:
             printf("FIRSTFIT \n");
+            //Call FIRST FIT fn
             break;
         case 3:
             printf("WORSTFIT \n");
+            //Call WORST FIT fn
             break;
         default:
             printf("Default case \n");
@@ -110,8 +113,8 @@ void* Denbu_Mem_Alloc(int mem_size_test, int style){
 }
 
 void* check_best_fit(int mem_size){
-    printf("Best fit fn call\n");
-    int best_fit_block_size = 0; // neet to change change var to hold size (including header) of bf_block
+    //printf("Best fit fn call\n");
+    int best_fit_block_size = 0; // to store size
     payload_header* current_block = head_block; 
     payload_header* best_fit_block = NULL;
 
@@ -128,7 +131,6 @@ void* check_best_fit(int mem_size){
                 }
             }
             if((current_block->size + 8) < best_fit_block_size && current_block->size >= mem_size){
-
                 best_fit_block_size = current_block->size + 8;
                 best_fit_block = current_block;
             }
@@ -143,6 +145,7 @@ void* check_best_fit(int mem_size){
         return NULL;
 	}
 
+    //store the finally allocated node 
     best_fit_block->alloc_flag = 1;
     head_block = best_fit_block+8;
     head_block->alloc_flag = 1;
